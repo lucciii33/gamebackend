@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { protectGame } = require("../middleware/gameAuthMiddleware");
 const {
   getCases,
   getCaseById,
@@ -10,9 +11,10 @@ const {
   accuse,
 } = require("../controllers/gameController");
 
+router.use(protectGame);
+
 router.get("/cases", getCases);
 router.get("/cases/:id", getCaseById);
-
 router.post("/sessions", startSession);
 router.get("/sessions/:id", getSession);
 router.post("/sessions/:id/interrogate", interrogateSuspect);

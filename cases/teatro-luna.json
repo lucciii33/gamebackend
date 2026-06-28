@@ -1,0 +1,269 @@
+{
+  "id": "teatro-luna",
+  "title": "El Último Aplauso",
+  "language": "es",
+  "difficulty": "fácil",
+  "winRequirements": { "minKeyClues": 4 },
+  "synopsis": "La actriz principal Valeria Monti muere durante el estreno de una obra en el Teatro Luna. Todos creen que fue un accidente con una copa de utilería, hasta que una mancha de maquillaje y una nota rota apuntan a sabotaje. Tres personas estaban entre bambalinas cuando cayó el telón. Todas tenían algo que perder.",
+  "victim": {
+    "name": "Valeria Monti",
+    "age": 41,
+    "occupation": "Actriz principal del Teatro Luna",
+    "description": "Famosa, brillante y cruel con quienes consideraba inferiores. Había anunciado que después del estreno revelaría una verdad que destruiría una carrera.",
+    "causeOfDeath": "Reacción alérgica severa provocada por aceite de almendra concentrado en su copa de escena",
+    "dateOfDeath": "Viernes 14 de noviembre de 2025",
+    "timeOfDeath": "21:18",
+    "discoveredBy": "El director, cuando Valeria se desplomó al final del segundo acto"
+  },
+  "setting": {
+    "location": "Teatro Luna, Madrid",
+    "date": "Noche de estreno",
+    "context": "El teatro estaba lleno. Solo el equipo principal podía entrar al camerino de Valeria y a la mesa de utilería durante el segundo acto."
+  },
+  "suspects": [
+    {
+      "id": "ines",
+      "name": "Inés Roldán",
+      "displayRole": "Actriz suplente",
+      "age": 32,
+      "shortBio": "Suplente de Valeria desde hace tres temporadas. Talentosa, resentida, siempre a la sombra.",
+      "publicAlibi": "Dice que estuvo ensayando sus líneas en el pasillo lateral durante todo el segundo acto.",
+      "secretBackstory": "Valeria había descubierto que Inés filtró críticas falsas a la prensa para desprestigiarla. Valeria planeaba denunciarla públicamente después del estreno. Inés sabía que Valeria era alérgica a las almendras porque compartieron camerino durante una gira. Robó el aceite de almendra de maquillaje y lo vertió en la copa de escena.",
+      "personalityPrompt": "Hablas con teatralidad contenida, como si cada frase fuera una actuación. Intentas parecer herida y subestimada. Si te presionan, te vuelves amarga y haces comentarios sobre la crueldad de Valeria.",
+      "knowsAbout": [
+        {
+          "clueId": "valeria-alergia",
+          "topic": "La alergia severa de Valeria a la almendra",
+          "triggerKeywords": ["alergia", "almendra", "comida", "gira", "reacción", "médico"],
+          "revealStrategy": "Al principio dice que Valeria tenía muchas manías. Si el jugador insiste con almendras o gira, admite que Valeria llevaba un autoinyector por una alergia fuerte."
+        },
+        {
+          "clueId": "amenaza-prensa",
+          "topic": "Valeria iba a denunciar una campaña de prensa falsa",
+          "triggerKeywords": ["prensa", "críticas", "rumores", "denunciar", "carrera", "escándalo"],
+          "revealStrategy": "Finge sorpresa. Si el jugador menciona críticas falsas o escándalo, dice que Valeria siempre amenazaba a todos y que nadie la tomaba en serio."
+        }
+      ],
+      "hidesAbout": [
+        {
+          "topic": "Que sabía exactamente dónde estaba el aceite de almendra",
+          "instruction": "Nunca admitas de entrada que tocaste la mesa de maquillaje. Si te preguntan por el aceite, di que esos productos los maneja maquillaje."
+        }
+      ],
+      "guilty": true
+    },
+    {
+      "id": "mateo",
+      "name": "Mateo Vidal",
+      "displayRole": "Director de la obra",
+      "age": 49,
+      "shortBio": "Director obsesivo, endeudado y desesperado por salvar el teatro con este estreno.",
+      "publicAlibi": "Afirma que estuvo junto a la cabina de luces revisando el ritmo de entrada de los actores.",
+      "secretBackstory": "Mateo había asegurado el estreno por una suma enorme. Si la obra fracasaba, perdería el teatro. Discutió con Valeria porque ella quería abandonar la producción tras esa noche. No la mató, pero ocultó la discusión para proteger la reputación del estreno.",
+      "personalityPrompt": "Hablas rápido, con cansancio y orgullo herido. Tiendes a convertir todo en una explicación artística. Si te preguntan por dinero, te irritas y dices que nadie entiende lo que cuesta mantener un teatro.",
+      "knowsAbout": [
+        {
+          "clueId": "seguro-estreno",
+          "topic": "El seguro millonario del estreno",
+          "triggerKeywords": ["seguro", "dinero", "deuda", "teatro", "bancarrota", "póliza"],
+          "revealStrategy": "Niega que el dinero importe. Si el jugador menciona póliza o deuda, admite que había un seguro, pero insiste en que no cubriría un asesinato."
+        },
+        {
+          "clueId": "discusion-mateo-valeria",
+          "topic": "Su discusión con Valeria antes del segundo acto",
+          "triggerKeywords": ["discusión", "pelea", "gritos", "abandonar", "segundo acto", "camerino"],
+          "revealStrategy": "Dice que fue una conversación profesional. Si el jugador menciona gritos, admite que Valeria amenazó con irse después del estreno."
+        }
+      ],
+      "hidesAbout": [],
+      "guilty": false
+    },
+    {
+      "id": "clara",
+      "name": "Clara Sanz",
+      "displayRole": "Jefa de utilería",
+      "age": 36,
+      "shortBio": "Meticulosa, agotada, responsable de cada copa, carta y objeto que aparece en escena.",
+      "publicAlibi": "Estuvo preparando la mesa de utilería y luego salió a buscar cinta adhesiva al almacén.",
+      "secretBackstory": "Clara cambió la copa de Valeria por error cinco minutos antes de la escena porque la original tenía una grieta. Ese cambio permitió que Inés manipulara la copa correcta en el último momento. Clara no mató a Valeria, pero teme que la culpen por negligencia.",
+      "personalityPrompt": "Hablas de forma práctica y defensiva. Te molestan las acusaciones vagas. Cuando estás nerviosa, enumeras detalles técnicos para demostrar que controlabas la situación.",
+      "knowsAbout": [
+        {
+          "clueId": "copa-cambiada",
+          "topic": "La copa de Valeria fue cambiada antes de escena",
+          "triggerKeywords": ["copa", "utilería", "cambio", "grieta", "vaso", "mesa"],
+          "revealStrategy": "Lo admite si preguntan por la copa. Explica que la cambió por una grieta y que la dejó en la mesa correcta."
+        },
+        {
+          "clueId": "ines-pasillo",
+          "topic": "Inés estuvo cerca de la mesa de utilería",
+          "triggerKeywords": ["inés", "pasillo", "utilería", "mesa", "viste", "quién pasó"],
+          "revealStrategy": "Si le preguntan quién estuvo cerca, dice que vio a Inés cruzar el pasillo lateral justo antes de la escena, aunque no la vio tocar nada."
+        }
+      ],
+      "hidesAbout": [
+        {
+          "topic": "Su miedo a ser culpada por negligencia",
+          "instruction": "Evita sonar culpable. Repite que hiciste el procedimiento correcto."
+        }
+      ],
+      "guilty": false
+    }
+  ],
+  "scenes": [
+    {
+      "id": "escenario",
+      "name": "El escenario",
+      "shortDescription": "El decorado del segundo acto permanece intacto, con la copa caída junto al cuerpo.",
+      "fullDescription": "El escenario conserva el decorado de un salón antiguo. La luz roja de emergencia baña los muebles falsos. En el suelo, cerca del punto donde Valeria cayó, está la copa de cristal usada en escena. El público fue evacuado, pero el olor a polvo, madera caliente y perfume aún flota en el aire.",
+      "objects": [
+        {
+          "id": "copa-escena",
+          "name": "Copa de escena",
+          "observation": "La copa huele a licor dulce, pero también a aceite cosmético. En el borde hay un residuo brillante y una marca tenue de lápiz labial que no coincide con el tono rojo oscuro que usaba Valeria.",
+          "revealsClueId": "aceite-almendra-copa"
+        },
+        {
+          "id": "marca-suelo",
+          "name": "Marca en el suelo",
+          "observation": "La posición de la copa muestra que Valeria bebió justo antes de caer, en su marca de escena. No parece que alguien la empujara ni que tropezara."
+        }
+      ]
+    },
+    {
+      "id": "camerino-valeria",
+      "name": "Camerino de Valeria",
+      "shortDescription": "Espejo iluminado, maquillaje caro y señales de una discusión reciente.",
+      "fullDescription": "El camerino está lleno de flores, notas de admiradores y maquillaje perfectamente ordenado. Sobre el tocador hay una caja médica abierta y un frasco de aceite desmaquillante de almendra casi vacío. En el suelo, junto a una silla caída, hay pedazos de una nota rota.",
+      "objects": [
+        {
+          "id": "frasco-almendra",
+          "name": "Aceite desmaquillante de almendra",
+          "observation": "El frasco está casi vacío, aunque Clara asegura que estaba lleno esa tarde. La etiqueta advierte que contiene aceite de almendra concentrado.",
+          "revealsClueId": "aceite-almendra-copa"
+        },
+        {
+          "id": "caja-medica",
+          "name": "Caja médica abierta",
+          "observation": "Dentro hay antihistamínicos y un hueco vacío donde debería estar un autoinyector. La etiqueta médica menciona alergia severa a frutos secos, especialmente almendra.",
+          "revealsClueId": "valeria-alergia"
+        },
+        {
+          "id": "nota-rota",
+          "name": "Nota rota",
+          "observation": "Reuniendo los pedazos se lee: 'Después del estreno hablaré con la prensa. Se acabaron tus críticas falsas'. La nota no está firmada.",
+          "revealsClueId": "amenaza-prensa"
+        }
+      ]
+    },
+    {
+      "id": "mesa-utileria",
+      "name": "Mesa de utilería",
+      "shortDescription": "Copas, cartas, pañuelos y objetos marcados con cinta blanca.",
+      "fullDescription": "Una mesa estrecha detrás del telón sostiene los objetos del segundo acto. Cada elemento tiene una etiqueta con el nombre del actor. La etiqueta de la copa de Valeria está ligeramente torcida, como si alguien la hubiera retirado y vuelto a pegar deprisa.",
+      "objects": [
+        {
+          "id": "etiqueta-copa",
+          "name": "Etiqueta de la copa",
+          "observation": "La etiqueta 'VALERIA - ACTO II' está despegada por un extremo. Debajo hay una marca antigua que indica que otra copa ocupaba ese lugar antes.",
+          "revealsClueId": "copa-cambiada"
+        },
+        {
+          "id": "lista-utileria",
+          "name": "Lista de utilería",
+          "observation": "La lista tiene una corrección apresurada: 'copa agrietada - cambiar antes de entrada'. La letra parece de Clara.",
+          "revealsClueId": "copa-cambiada"
+        }
+      ]
+    },
+    {
+      "id": "pasillo-lateral",
+      "name": "Pasillo lateral",
+      "shortDescription": "Un corredor estrecho entre camerinos y utilería.",
+      "fullDescription": "El pasillo lateral conecta el camerino de Valeria con la mesa de utilería. Hay poca luz y una cortina negra oculta la vista desde el escenario. En el suelo se ven marcas de tacón y una pequeña mancha color nude.",
+      "objects": [
+        {
+          "id": "mancha-maquillaje",
+          "name": "Mancha de maquillaje",
+          "observation": "La mancha coincide con la base de maquillaje que usa Inés, más clara que la de Valeria. Está justo junto a la mesa de utilería, no en el camerino.",
+          "revealsClueId": "ines-pasillo"
+        },
+        {
+          "id": "programa-arrugado",
+          "name": "Programa de mano arrugado",
+          "observation": "Alguien escribió en el margen: 'Si Valeria habla, Inés está acabada'. Parece una nota de un crítico o de alguien del teatro.",
+          "revealsClueId": "amenaza-prensa"
+        }
+      ]
+    },
+    {
+      "id": "cabina-luces",
+      "name": "Cabina de luces",
+      "shortDescription": "Desde aquí Mateo siguió la función y el ritmo de los actores.",
+      "fullDescription": "La cabina está elevada sobre la platea. Hay una libreta con tiempos de entrada, un termo de café frío y una copia del contrato del estreno. Desde aquí se ve el escenario, pero no la mesa de utilería detrás del telón.",
+      "objects": [
+        {
+          "id": "poliza-seguro",
+          "name": "Póliza del estreno",
+          "observation": "La póliza cubre cancelaciones y accidentes, pero excluye explícitamente muerte por acto criminal. Mateo no habría cobrado si se demostraba asesinato.",
+          "revealsClueId": "seguro-estreno"
+        },
+        {
+          "id": "libreta-mateo",
+          "name": "Libreta de dirección",
+          "observation": "Mateo anotó: 'Valeria amenaza con irse. Hablar después del acto II'. La tinta está corrida por café, pero la frase se lee claramente.",
+          "revealsClueId": "discusion-mateo-valeria"
+        }
+      ]
+    }
+  ],
+  "clues": [
+    {
+      "id": "aceite-almendra-copa",
+      "title": "Aceite de almendra en la copa",
+      "description": "La copa de Valeria fue contaminada con aceite de almendra concentrado, suficiente para provocar una reacción severa."
+    },
+    {
+      "id": "valeria-alergia",
+      "title": "Alergia fatal de Valeria",
+      "description": "Valeria era severamente alérgica a la almendra y llevaba medicación de emergencia."
+    },
+    {
+      "id": "amenaza-prensa",
+      "title": "Amenaza a Inés",
+      "description": "Valeria planeaba hablar con la prensa sobre críticas falsas que podían destruir la carrera de Inés."
+    },
+    {
+      "id": "copa-cambiada",
+      "title": "La copa fue cambiada",
+      "description": "Clara cambió la copa de Valeria por una grieta antes de escena, dejando una oportunidad breve para manipular la copa correcta."
+    },
+    {
+      "id": "ines-pasillo",
+      "title": "Inés estuvo junto a utilería",
+      "description": "Inés pasó por el pasillo lateral, cerca de la mesa de utilería, poco antes de la escena fatal."
+    },
+    {
+      "id": "seguro-estreno",
+      "title": "Seguro del estreno",
+      "description": "Mateo tenía un seguro del estreno, pero la póliza excluía muerte criminal, debilitando su supuesto beneficio."
+    },
+    {
+      "id": "discusion-mateo-valeria",
+      "title": "Discusión con Mateo",
+      "description": "Mateo y Valeria discutieron porque ella quería abandonar la producción después del estreno."
+    }
+  ],
+  "killerId": "ines",
+  "solution": {
+    "summary": "Inés Roldán contaminó la copa de escena de Valeria con aceite de almendra concentrado, sabiendo que su alergia podía matarla.",
+    "motive": "Valeria iba a revelar que Inés había filtrado críticas falsas para destruirla. Inés perdería su carrera justo cuando creía estar cerca del papel principal.",
+    "means": "Inés conocía la alergia de Valeria y usó el aceite de almendra del camerino para contaminar la copa correcta.",
+    "opportunity": "Clara cambió la copa por una grieta, e Inés cruzó el pasillo lateral junto a la mesa de utilería poco antes de que Valeria bebiera en escena.",
+    "keyClues": ["aceite-almendra-copa", "valeria-alergia", "amenaza-prensa", "ines-pasillo", "copa-cambiada"]
+  },
+  "redHerrings": [
+    "Mateo tenía deudas y discutió con Valeria, pero el seguro no cubría asesinato y su posición en cabina no le daba acceso a la copa.",
+    "Clara cambió la copa, pero lo hizo por una grieta registrada en la lista de utilería y no tenía motivo para matar a Valeria."
+  ]
+}

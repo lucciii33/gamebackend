@@ -22,6 +22,7 @@ app.use(cors());
 
 app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api/checkout", require("./routes/checkoutRoutes"));
+app.use("/api/game-auth", require("./routes/gameAuthRoutes"));
 app.use("/api/game", require("./routes/gameRoutes"));
 
 app.use((req, res) => res.status(404).json({ message: "Route not found" }));

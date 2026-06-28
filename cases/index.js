@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { assertValidCase } = require("./validateCase");
 
 const CASES_DIR = __dirname;
 
@@ -9,6 +10,8 @@ function loadCases() {
   for (const file of files) {
     const raw = fs.readFileSync(path.join(CASES_DIR, file), "utf8");
     const parsed = JSON.parse(raw);
+    // Garantía de solvencia: un caso injusto/incoherente NO arranca el server.
+    assertValidCase(parsed);
     cases[parsed.id] = parsed;
   }
   return cases;

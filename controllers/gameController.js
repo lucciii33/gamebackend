@@ -1,7 +1,34 @@
 const asyncHandler = require("express-async-handler");
 const GameSession = require("../model/GameSessionModel");
 const { listCases, getCase, getPublicCaseView } = require("../cases");
+const { requiredKeyClues } = require("../cases/validateCase");
 const { interrogate, exploreObject } = require("../services/detectiveService");
+
+/**
+ * Medidor de evidencia: cuántas pruebas CLAVE ha reunido el jugador, sin
+ * revelar CUÁLES son (eso destriparía la solución). Alimenta el botón "Acusar".
+ */
+function buildEvidence(caseData, discoveredClueIds) {
+  const keyClues = caseData.solution?.keyClues || [];
+  const discovered = keyClues.filter((id) => discoveredClueIds.includes(id)).length;
+  const required = requiredKeyClues(caseData);
+  return {
+    discoveredKeyClues: discovered,
+    requiredKeyClues: required,
+    totalKeyClues: keyClues.length,
+    canAccuse: discovered >= required,
+  };
+}
+
+function assertOwnsSession(req, session) {
+  const sessionUserId = session.userId?.toString();
+  const requestUserId = req.user?._id?.toString();
+  if (!sessionUserId || sessionUserId !== requestUserId) {
+    const err = new Error("No autorizado para esta sesión");
+    err.statusCode = 403;
+    throw err;
+  }
+}
 
 const getCases = asyncHandler(async (req, res) => {
   res.json({ cases: listCases() });
@@ -33,6 +60,7 @@ const startSession = asyncHandler(async (req, res) => {
     status: session.status,
     discoveredClueIds: [],
     exploredObjectIds: [],
+    evidence: buildEvidence(caseData, []),
   });
 });
 
@@ -42,6 +70,7 @@ const getSession = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Sesión no encontrada");
   }
+  assertOwnsSession(req, session);
   const caseData = getCase(session.caseId);
   const interrogations = {};
   for (const [suspectId, turns] of session.interrogations.entries()) {
@@ -56,6 +85,7 @@ const getSession = asyncHandler(async (req, res) => {
     exploredObjectIds: session.exploredObjectIds,
     interrogations,
     accusedSuspectId: session.accusedSuspectId,
+    evidence: buildEvidence(caseData, session.discoveredClueIds),
   });
 });
 
@@ -70,6 +100,7 @@ const interrogateSuspect = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Sesión no encontrada");
   }
+  assertOwnsSession(req, session);
   if (session.status !== "active") {
     res.status(409);
     throw new Error("La partida ya terminó");
@@ -116,6 +147,7 @@ const interrogateSuspect = asyncHandler(async (req, res) => {
     revealedClueIds: result.revealedClueIds,
     newClues,
     discoveredClueIds: session.discoveredClueIds,
+    evidence: buildEvidence(caseData, session.discoveredClueIds),
   });
 });
 
@@ -126,6 +158,7 @@ const exploreScene = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Sesión no encontrada");
   }
+  assertOwnsSession(req, session);
   if (session.status !== "active") {
     res.status(409);
     throw new Error("La partida ya terminó");
@@ -178,6 +211,7 @@ const exploreScene = asyncHandler(async (req, res) => {
     observation: result.observation,
     newClue,
     discoveredClueIds: session.discoveredClueIds,
+    evidence: buildEvidence(caseData, session.discoveredClueIds),
   });
 });
 
@@ -192,6 +226,7 @@ const accuse = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Sesión no encontrada");
   }
+  assertOwnsSession(req, session);
   if (session.status !== "active") {
     res.status(409);
     throw new Error("La partida ya terminó");
@@ -201,6 +236,15 @@ const accuse = asyncHandler(async (req, res) => {
   if (!suspect) {
     res.status(404);
     throw new Error("Sospechoso no encontrado");
+  }
+
+  // Puerta de evidencia: no puedes gastar tu única acusación sin pruebas.
+  const evidence = buildEvidence(caseData, session.discoveredClueIds);
+  if (!evidence.canAccuse) {
+    res.status(409);
+    throw new Error(
+      `Necesitas más pruebas antes de acusar (${evidence.discoveredKeyClues}/${evidence.requiredKeyClues} pruebas clave reunidas).`,
+    );
   }
 
   const correct = caseData.killerId === suspectId;

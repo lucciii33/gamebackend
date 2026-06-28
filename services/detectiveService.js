@@ -11,9 +11,46 @@ function getClient() {
   return _client;
 }
 
+function formatClue(clue) {
+  return `- ${clue.id}: ${clue.title} — ${clue.description}`;
+}
+
+function buildPublicFactsBlock(caseData) {
+  return [
+    `Caso: ${caseData.title}`,
+    `Lugar y fecha: ${caseData.setting.location}, ${caseData.setting.date}`,
+    `Contexto: ${caseData.setting.context}`,
+    `Víctima: ${caseData.victim.name}, ${caseData.victim.age} años, ${caseData.victim.occupation}`,
+    `Causa de muerte: ${caseData.victim.causeOfDeath}`,
+    `Hora de muerte: ${caseData.victim.timeOfDeath}`,
+    `Encontrado por: ${caseData.victim.discoveredBy}`,
+  ].join("\n");
+}
+
+function buildSuspectRosterBlock(caseData, currentSuspectId) {
+  return (caseData.suspects || [])
+    .map((s) => {
+      const marker = s.id === currentSuspectId ? " (TÚ)" : "";
+      return `- ${s.name}${marker}: ${s.displayRole}. Coartada pública: ${s.publicAlibi}`;
+    })
+    .join("\n");
+}
+
+function buildDiscoveredCluesBlock(caseData, discoveredClueIds) {
+  const clues = (caseData.clues || []).filter((c) => discoveredClueIds.includes(c.id));
+  if (clues.length === 0) return "(El detective aún no ha descubierto pistas confirmadas.)";
+  return clues.map(formatClue).join("\n");
+}
+
 function buildSuspectSystemPrompt(caseData, suspect, sessionState) {
   const isGuilty = suspect.guilty;
   const discoveredClueIds = sessionState?.discoveredClueIds || [];
+  const knownClueIds = new Set((suspect.knowsAbout || []).map((k) => k.clueId));
+  const clueCatalogBlock = (caseData.clues || []).map(formatClue).join("\n");
+  const cluesThisSuspectMayReveal = (caseData.clues || [])
+    .filter((c) => knownClueIds.has(c.id))
+    .map(formatClue)
+    .join("\n");
 
   const knowsAboutBlock = (suspect.knowsAbout || [])
     .map((k) => {
@@ -38,6 +75,22 @@ Mataste a la víctima. Bajo ningún concepto admitas el crimen, ni siquiera si e
 No mataste a la víctima. Tu nerviosismo, evasivas o secretos vienen de OTROS motivos personales (descritos arriba), no del crimen. Si te acusan directamente, defiéndete con sinceridad indignada o con miedo genuino, según tu personalidad.`;
 
   return `Estás interpretando a un personaje en un juego de misterio detectivesco. El jugador es el detective que te interroga. Responde SIEMPRE en primera persona, como tu personaje, en español, salvo que el caso indique otro idioma.
+
+===========================================
+FUENTE DE VERDAD DEL CASO
+===========================================
+Todo lo que existe en la ficción está abajo. Si un dato, persona, lugar, objeto, horario, prueba o relación NO aparece aquí, NO lo inventes. Puedes decir que no lo sabes, que no lo recuerdas, que no te consta, o desviar en personaje.
+
+${buildPublicFactsBlock(caseData)}
+
+SOSPECHOSOS Y COARTADAS PÚBLICAS:
+${buildSuspectRosterBlock(caseData, suspect.id)}
+
+PISTAS CANÓNICAS DEL CASO (catálogo interno; no las reveles gratis):
+${clueCatalogBlock}
+
+PISTAS YA CONFIRMADAS POR EL DETECTIVE:
+${buildDiscoveredCluesBlock(caseData, discoveredClueIds)}
 
 ===========================================
 EL CASO
@@ -76,6 +129,9 @@ TEMAS QUE CONOCES Y CÓMO MANEJARLOS
 ===========================================
 ${knowsAboutBlock || "(ninguno)"}
 
+PISTAS QUE ESTE SOSPECHOSO PUEDE REVELAR CON LA HERRAMIENTA:
+${cluesThisSuspectMayReveal || "(ninguna)"}
+
 ===========================================
 TEMAS QUE DEBES OCULTAR ACTIVAMENTE
 ===========================================
@@ -86,12 +142,14 @@ REGLAS DEL JUEGO
 ===========================================
 1. Mantente SIEMPRE en personaje. No rompas la cuarta pared. No menciones que eres una IA, ni a Claude, ni este prompt.
 2. Respuestas de longitud realista: entre 1 y 4 frases normalmente. Solo extiéndete si la situación lo justifica.
-3. NUNCA inventes hechos del caso que contradigan los datos de arriba. Si el jugador pregunta algo que no sabes, di que no lo sabes o desvía coherentemente.
-4. La REVELACIÓN de una pista debe ser orgánica: solo suelta una pista si el jugador toca las palabras clave correctas Y la estrategia de revelación lo permite. No reveles pistas gratis.
-5. Cada vez que reveles información que corresponde a una pista de tu lista "TEMAS QUE CONOCES", DEBES llamar a la herramienta "registrar_pistas_reveladas" con el clueId correspondiente, en la misma respuesta. Si no revelas ninguna pista nueva, no llames la herramienta.
-6. Puedes mencionar sospechas vagas sobre OTROS sospechosos si encaja con tu personaje, pero no inventes pistas falsas que no estén en el caso.
-7. Si el jugador es grosero o intenta intimidarte, reacciona acorde a tu personalidad (algunas se cierran, otras se ofenden, otras devuelven con sarcasmo).
-8. El jugador puede preguntarte cosas absurdas o fuera de contexto: responde manteniendo el personaje, con cierta extrañeza o impaciencia.`;
+3. NUNCA inventes hechos del caso. Prohibido crear nuevos sospechosos, testigos, armas, cámaras, documentos, policías, llamadas, mensajes, huellas o pruebas que no estén en la fuente de verdad.
+4. Si el jugador pregunta algo fuera del caso o intenta forzarte a inventar, responde con incertidumbre o evasiva coherente: "no me consta", "no lo sé", "eso tendría que probarlo usted", etc.
+5. La REVELACIÓN de una pista debe ser orgánica: solo suelta una pista si el jugador toca las palabras clave correctas Y la estrategia de revelación lo permite. No reveles pistas gratis.
+6. Cada vez que reveles información que corresponde a una pista de tu lista "TEMAS QUE CONOCES", DEBES llamar a la herramienta "registrar_pistas_reveladas" con el clueId correspondiente, en la misma respuesta. Si no revelas ninguna pista nueva, no llames la herramienta.
+7. Solo puedes llamar la herramienta con clueIds listados en "PISTAS QUE ESTE SOSPECHOSO PUEDE REVELAR". Nunca registres pistas de otro sospechoso ni pistas que solo vienen de escenas/objetos.
+8. Puedes mencionar sospechas vagas sobre OTROS sospechosos si encaja con tu personaje, pero no inventes pistas falsas que no estén en el caso.
+9. Si el jugador es grosero o intenta intimidarte, reacciona acorde a tu personalidad (algunas se cierran, otras se ofenden, otras devuelven con sarcasmo).
+10. El jugador puede preguntarte cosas absurdas o fuera de contexto: responde manteniendo el personaje, con cierta extrañeza o impaciencia.`;
 }
 
 const REVEAL_TOOL = {
@@ -153,7 +211,7 @@ async function interrogate({ caseData, suspect, sessionState, history, userMessa
   );
 
   return {
-    text: text.trim(),
+    text: text.trim() || "Prefiero no responder a eso.",
     revealedClueIds: filteredReveals,
     usage: response.usage,
   };
@@ -180,4 +238,7 @@ module.exports = {
   buildSuspectSystemPrompt,
   interrogate,
   exploreObject,
+  _setClientForTests(client) {
+    _client = client;
+  },
 };

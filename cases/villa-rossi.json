@@ -3,6 +3,7 @@
   "title": "Muerte en la Villa Rossi",
   "language": "es",
   "difficulty": "media",
+  "winRequirements": { "minKeyClues": 4 },
   "synopsis": "El magnate naviero Marco Rossi aparece muerto en su despacho durante una cena privada en su villa de la Costa Amalfitana. La copa de vino volcada sobre el escritorio sugiere envenenamiento. Solo tres personas estaban en la villa esa noche, y todas tenían razones para quererlo muerto. Tienes una sola oportunidad de acusar al asesino.",
   "victim": {
     "name": "Marco Rossi",
@@ -10,6 +11,7 @@
     "occupation": "Magnate naviero, dueño de Rossi Shipping",
     "description": "Hombre temperamental, mujeriego, conocido por humillar públicamente a quien le contradijera. Recientemente había anunciado que cambiaría su testamento.",
     "causeOfDeath": "Envenenamiento por cianuro disuelto en vino tinto",
+    "dateOfDeath": "Sábado 21 de junio de 2025",
     "timeOfDeath": "22:47",
     "discoveredBy": "La cocinera, al llevar el postre a las 23:05"
   },
