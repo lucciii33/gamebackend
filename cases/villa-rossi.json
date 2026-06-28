@@ -1,0 +1,251 @@
+{
+  "id": "villa-rossi",
+  "title": "Muerte en la Villa Rossi",
+  "language": "es",
+  "difficulty": "media",
+  "synopsis": "El magnate naviero Marco Rossi aparece muerto en su despacho durante una cena privada en su villa de la Costa Amalfitana. La copa de vino volcada sobre el escritorio sugiere envenenamiento. Solo tres personas estaban en la villa esa noche, y todas tenían razones para quererlo muerto. Tienes una sola oportunidad de acusar al asesino.",
+  "victim": {
+    "name": "Marco Rossi",
+    "age": 62,
+    "occupation": "Magnate naviero, dueño de Rossi Shipping",
+    "description": "Hombre temperamental, mujeriego, conocido por humillar públicamente a quien le contradijera. Recientemente había anunciado que cambiaría su testamento.",
+    "causeOfDeath": "Envenenamiento por cianuro disuelto en vino tinto",
+    "timeOfDeath": "22:47",
+    "discoveredBy": "La cocinera, al llevar el postre a las 23:05"
+  },
+  "setting": {
+    "location": "Villa Rossi, Positano, Italia",
+    "date": "Sábado por la noche",
+    "context": "Cena privada con su esposa, su socio de negocios y su sobrino. El personal había sido despedido temprano, salvo la cocinera."
+  },
+  "suspects": [
+    {
+      "id": "elena",
+      "name": "Elena Bianchi",
+      "displayRole": "Esposa de Marco",
+      "age": 38,
+      "shortBio": "Ex modelo, segunda esposa de Marco desde hace 6 años. Elegante, fría, calculadora.",
+      "publicAlibi": "Estuvo en su habitación arreglándose desde las 22:00 hasta que escuchó el grito de la cocinera.",
+      "secretBackstory": "Marco le había dicho esa misma tarde que iba a cambiar el testamento para dejarle solo lo mínimo legal y darle el resto a su sobrino. Elena había descubierto además que Marco tenía una amante en Milán y planeaba divorciarse. Tiene formación en química (estudió farmacia antes de ser modelo).",
+      "personalityPrompt": "Hablas con elegancia gélida, frases cortas, evitas mostrar emoción. Cuando te incomodan respondes con sarcasmo o cambiando de tema. Llamas al detective 'detective' con cierto desdén. Nunca admites debilidad. Si te acorralan, atacas la credibilidad del que te pregunta.",
+      "knowsAbout": [
+        {
+          "clueId": "testamento-cambio",
+          "topic": "El cambio de testamento que Marco planeaba",
+          "triggerKeywords": ["testamento", "herencia", "dinero", "abogado", "patrimonio", "viuda"],
+          "revealStrategy": "Niega saber nada hasta que el jugador mencione el testamento Y otra prueba. Entonces admite con frialdad que 'tenía planes ridículos pero nada estaba firmado'."
+        },
+        {
+          "clueId": "amante-milan",
+          "topic": "La amante de Marco en Milán",
+          "triggerKeywords": ["amante", "infidelidad", "otra mujer", "milán", "divorcio"],
+          "revealStrategy": "Niega rotundamente al principio. Si el jugador insiste con detalles concretos, suelta amarga: 'Todos los maridos italianos son iguales'."
+        }
+      ],
+      "hidesAbout": [
+        {
+          "topic": "Su formación en farmacia/química",
+          "instruction": "JAMÁS menciones que estudiaste farmacia o que sabes de química. Si te preguntan por tus estudios o por venenos, desvías diciendo que solo estudiaste 'arte y moda'."
+        }
+      ],
+      "guilty": true
+    },
+    {
+      "id": "giorgio",
+      "name": "Giorgio Conti",
+      "displayRole": "Socio de negocios de Marco",
+      "age": 58,
+      "shortBio": "Cofundador de Rossi Shipping. Hombre robusto, voz grave, vestido siempre impecable.",
+      "publicAlibi": "Bajó al despacho a las 22:30 a recoger unos papeles, salió a las 22:40, y subió a su habitación a leer hasta el grito.",
+      "secretBackstory": "Marco lo había descubierto desviando fondos de la empresa (medio millón de euros) hace tres meses. Marco le había dado plazo hasta el lunes siguiente para devolver el dinero o sería denunciado a la policía. Giorgio entró al despacho esa noche para suplicar más tiempo, pero Marco se rió de él. Cuando salió del despacho a las 22:40, Marco estaba vivo bebiendo vino.",
+      "personalityPrompt": "Hablas con autoridad y voz grave, pero hay un temblor leve si te presionan sobre dinero o la empresa. Eres formal, hablas en frases largas y técnicas sobre negocios. Sudas un poco cuando mientes. Tiendes a desviar conversaciones hacia 'el legado de Marco como hombre de negocios'. Si te acorralan sobre algo concreto, te ofendes con dignidad.",
+      "knowsAbout": [
+        {
+          "clueId": "desfalco-empresa",
+          "topic": "El desfalco de medio millón de euros",
+          "triggerKeywords": ["dinero", "empresa", "cuentas", "fondos", "auditoría", "rossi shipping", "lunes"],
+          "revealStrategy": "Niega cualquier irregularidad. Si el jugador menciona auditoría O el plazo del lunes, palidece y admite que 'hubo un malentendido contable que íbamos a aclarar'."
+        },
+        {
+          "clueId": "discusion-despacho",
+          "topic": "La discusión que tuvo con Marco en el despacho",
+          "triggerKeywords": ["discusión", "pelea", "gritos", "despacho", "22:30", "antes de morir"],
+          "revealStrategy": "Admite que bajó al despacho pero dice que 'fue una conversación cordial sobre el trimestre'. Si el jugador menciona que alguien oyó gritos, admite que 'hubo intercambio acalorado' pero defiende que Marco estaba vivo al irse."
+        }
+      ],
+      "hidesAbout": [],
+      "guilty": false
+    },
+    {
+      "id": "luca",
+      "name": "Luca Rossi",
+      "displayRole": "Sobrino de Marco",
+      "age": 27,
+      "shortBio": "Hijo del hermano fallecido de Marco. Joven nervioso, viste casual, evita el contacto visual.",
+      "publicAlibi": "Estuvo en la terraza fumando entre las 22:15 y las 22:50, luego subió a su habitación.",
+      "secretBackstory": "Marco le había dicho esa tarde que pensaba dejarle la mayor parte de la herencia, lo cual él recibió con shock más que alegría: Luca tiene una deuda de juego con gente peligrosa en Nápoles que vencía en dos semanas y que la herencia habría cubierto. NO mató a Marco, pero entró al despacho a las 22:50 (después de Giorgio) para pedirle un adelanto, encontró a Marco ya muerto y huyó aterrorizado sin avisar a nadie, temiendo que lo culparan.",
+      "personalityPrompt": "Hablas nervioso, tartamudeas un poco, te pasas la mano por el pelo. Tiendes a responder con preguntas ('¿por qué me pregunta eso?'). Tu inglés/italiano es informal, jerga juvenil. Cuando mientes te delatas mirando al suelo. Tienes miedo genuino que el detective no entiende del todo.",
+      "knowsAbout": [
+        {
+          "clueId": "deuda-juego",
+          "topic": "Su deuda de juego en Nápoles",
+          "triggerKeywords": ["deudas", "juego", "casino", "nápoles", "dinero", "problemas"],
+          "revealStrategy": "Niega frenéticamente al principio. Si el jugador menciona detalles específicos (casino, Nápoles, plazo), se derrumba y lo admite llorando."
+        },
+        {
+          "clueId": "cuerpo-encontrado-antes",
+          "topic": "Que entró al despacho a las 22:50 y encontró a Marco muerto",
+          "triggerKeywords": ["despacho", "22:50", "encontrar el cuerpo", "primero", "viste a marco", "antes de la cocinera"],
+          "revealStrategy": "Niega haber entrado al despacho. Solo lo admite si el jugador presenta evidencia concreta (huellas, alguien lo vio, una ceniza de cigarrillo). Entonces confiesa entre lágrimas que vio el cuerpo y huyó."
+        }
+      ],
+      "hidesAbout": [],
+      "guilty": false
+    }
+  ],
+  "scenes": [
+    {
+      "id": "despacho",
+      "name": "El despacho de Marco",
+      "shortDescription": "Despacho de roble con vista al mar. El cuerpo de Marco yace caído sobre el escritorio.",
+      "fullDescription": "Una habitación amplia con paredes forradas en madera oscura, escritorio antiguo de roble, ventanal con vista al Mediterráneo. El cuerpo de Marco Rossi está desplomado sobre el escritorio, la cabeza ladeada, una mueca de dolor congelada en el rostro. Una copa de vino tinto está volcada cerca de su mano, manchando unos papeles. La habitación huele a vino y a algo más, ligeramente amargo, como almendras.",
+      "objects": [
+        {
+          "id": "copa-vino",
+          "name": "Copa de vino volcada",
+          "observation": "La copa está manchada de vino tinto. Acercando la nariz se percibe claramente un olor a almendras amargas, signo clásico de cianuro. Aún hay restos de líquido cristalino mezclado con el vino.",
+          "revealsClueId": "veneno-cianuro"
+        },
+        {
+          "id": "papeles-escritorio",
+          "name": "Papeles sobre el escritorio",
+          "observation": "Son borradores manuscritos de un nuevo testamento, con la fecha de hoy. Marco escribió de su puño y letra: 'todo a Luca, salvo la legítima de Elena'. No está firmado ni notariado, pero la intención está clara.",
+          "revealsClueId": "testamento-cambio"
+        },
+        {
+          "id": "cenicero",
+          "name": "Cenicero junto al escritorio",
+          "observation": "Hay tres colillas. Dos son de la marca que fumaba Marco. La tercera es de una marca diferente, fina, mentolada — la misma que fuma Luca Rossi. La ceniza aún está fresca.",
+          "revealsClueId": "cuerpo-encontrado-antes"
+        },
+        {
+          "id": "cajon-escritorio",
+          "name": "Cajón del escritorio",
+          "observation": "Contiene una carpeta etiquetada 'AUDITORÍA - RS' con análisis financieros que muestran un faltante de 487.000€ desviados durante los últimos 18 meses. Hay una nota adhesiva amarilla: 'Giorgio - lunes 9am, o llamo a la policía. M.'",
+          "revealsClueId": "desfalco-empresa"
+        }
+      ]
+    },
+    {
+      "id": "cocina",
+      "name": "La cocina",
+      "shortDescription": "Cocina amplia. La cocinera, Rosa, prepara el postre.",
+      "fullDescription": "Cocina industrial, impecable. Rosa, la cocinera (60 años, leal a la familia desde hace 30), prepara tiramisú. Está nerviosa pero coopera. Dice que solo ella estaba en la planta baja entre las 22:00 y las 23:00, salvo cuando vio bajar a Giorgio hacia el despacho a las 22:30 y subir a las 22:40. Asegura que nadie más bajó... aunque admite que se ausentó cinco minutos al jardín a sacar la basura sobre las 22:50.",
+      "objects": [
+        {
+          "id": "agenda-rosa",
+          "name": "Lista de la compra de Rosa",
+          "observation": "Junto a la lista hay una nota en el margen: 'Sra. Elena pidió ayer agua mineral del bidón del sótano - segunda vez esta semana'. Curioso, considerando que hay agua filtrada en cada habitación.",
+          "revealsClueId": "elena-baja-sotano"
+        }
+      ]
+    },
+    {
+      "id": "habitacion-elena",
+      "name": "Habitación de Elena",
+      "shortDescription": "Suite principal. Elena dice haber estado aquí toda la noche.",
+      "fullDescription": "Suite enorme con vestidor, baño de mármol, balcón al mar. Todo en tonos neutros, perfumes caros, ropa de diseño. La cama está hecha. En el tocador hay maquillaje a medio usar.",
+      "objects": [
+        {
+          "id": "libros-elena",
+          "name": "Estantería de libros",
+          "observation": "Mayormente revistas de moda y novelas, pero al fondo hay tres libros viejos de farmacología y toxicología, con la inscripción 'Universidad de Bolonia, Facultad de Farmacia, 2008'. Las páginas sobre alcaloides y cianuros están dobladas.",
+          "revealsClueId": "elena-quimica"
+        },
+        {
+          "id": "papelera-bano",
+          "name": "Papelera del baño",
+          "observation": "Bajo unos pañuelos, un guante de látex desechado con una mancha rojiza tenue (¿vino?) y un leve olor a amargo."
+        }
+      ]
+    },
+    {
+      "id": "sotano",
+      "name": "El sótano / bodega",
+      "shortDescription": "Bodega de vinos y almacén.",
+      "fullDescription": "Bodega fresca con cientos de botellas en estantes. Hay también una zona de almacén con utensilios de jardinería viejos. El polvo cubre la mayoría de superficies, salvo zonas con pisadas recientes.",
+      "objects": [
+        {
+          "id": "estante-pesticidas",
+          "name": "Estante de productos de jardinería",
+          "observation": "Hay un frasco antiguo de pesticida industrial, marcado con calavera, etiquetado 'Cyanuro de potasio - USO AGRÍCOLA - 1987'. El frasco está abierto y casi vacío. Hay una huella parcial limpia en el polvo del estante, como si alguien hubiera cogido algo cercano hace poco.",
+          "revealsClueId": "fuente-veneno"
+        }
+      ]
+    }
+  ],
+  "clues": [
+    {
+      "id": "veneno-cianuro",
+      "title": "Cianuro en la copa",
+      "description": "La copa de vino de Marco contiene cianuro. El olor a almendras amargas y los restos cristalinos lo confirman."
+    },
+    {
+      "id": "testamento-cambio",
+      "title": "Cambio de testamento inminente",
+      "description": "Marco planeaba dejar casi todo a su sobrino Luca y solo la legítima legal a Elena. El borrador estaba sin firmar."
+    },
+    {
+      "id": "amante-milan",
+      "title": "Amante en Milán",
+      "description": "Marco tenía una amante en Milán y planeaba divorciarse de Elena."
+    },
+    {
+      "id": "desfalco-empresa",
+      "title": "Desfalco de Giorgio",
+      "description": "Giorgio desvió 487.000€ de Rossi Shipping. Marco le había dado plazo hasta el lunes para devolverlos o sería denunciado."
+    },
+    {
+      "id": "discusion-despacho",
+      "title": "Discusión Giorgio-Marco",
+      "description": "Giorgio y Marco discutieron acaloradamente en el despacho entre 22:30 y 22:40. Marco estaba vivo cuando Giorgio salió."
+    },
+    {
+      "id": "deuda-juego",
+      "title": "Deuda de juego de Luca",
+      "description": "Luca tiene una deuda de juego con gente peligrosa en Nápoles que vence en dos semanas. La herencia le habría salvado la vida."
+    },
+    {
+      "id": "cuerpo-encontrado-antes",
+      "title": "Luca encontró el cuerpo antes",
+      "description": "Luca entró al despacho a las 22:50, encontró a Marco ya muerto, y huyó aterrorizado sin avisar."
+    },
+    {
+      "id": "elena-quimica",
+      "title": "Elena estudió farmacia",
+      "description": "Elena estudió farmacia en la Universidad de Bolonia. Tiene libros de toxicología con páginas sobre cianuros marcadas."
+    },
+    {
+      "id": "elena-baja-sotano",
+      "title": "Elena baja al sótano frecuentemente",
+      "description": "Elena ha bajado al sótano dos veces esta semana con la excusa de coger agua mineral, pese a tener agua filtrada en su habitación."
+    },
+    {
+      "id": "fuente-veneno",
+      "title": "Origen del cianuro",
+      "description": "En el sótano hay un frasco viejo de cianuro de potasio agrícola, casi vacío, y huellas recientes en el polvo del estante."
+    }
+  ],
+  "killerId": "elena",
+  "solution": {
+    "summary": "Elena Bianchi envenenó a Marco con cianuro de potasio que tomó del frasco agrícola viejo del sótano.",
+    "motive": "Marco iba a cambiar el testamento para dejarle solo la legítima legal, le iba a pedir el divorcio por su amante en Milán, y Elena necesitaba mantener el patrimonio que consideraba suyo tras 6 años de matrimonio.",
+    "means": "Su formación en farmacia (oculta deliberadamente) le permitía dosificar el cianuro. Usó el frasco agrícola del sótano. El guante de látex en su papelera fue para manipular el veneno sin contaminarse.",
+    "opportunity": "Bajó al despacho de Marco entre que Giorgio salió (22:40) y Luca entró (22:50) — apenas 10 minutos. La cocinera estaba sacando la basura justo en esos minutos.",
+    "keyClues": ["veneno-cianuro", "testamento-cambio", "elena-quimica", "fuente-veneno", "elena-baja-sotano"]
+  },
+  "redHerrings": [
+    "Giorgio tenía motivo (el desfalco) y estuvo en el despacho, pero Marco estaba vivo cuando salió.",
+    "Luca tenía deudas y encontró el cuerpo, pero su pánico es genuino — además habría heredado más estando Marco vivo unos días más para firmar el testamento."
+  ]
+}

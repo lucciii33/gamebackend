@@ -1,0 +1,22 @@
+const express = require("express");
+const router = express.Router();
+const {
+  getCases,
+  getCaseById,
+  startSession,
+  getSession,
+  interrogateSuspect,
+  exploreScene,
+  accuse,
+} = require("../controllers/gameController");
+
+router.get("/cases", getCases);
+router.get("/cases/:id", getCaseById);
+
+router.post("/sessions", startSession);
+router.get("/sessions/:id", getSession);
+router.post("/sessions/:id/interrogate", interrogateSuspect);
+router.post("/sessions/:id/explore", exploreScene);
+router.post("/sessions/:id/accuse", accuse);
+
+module.exports = router;
