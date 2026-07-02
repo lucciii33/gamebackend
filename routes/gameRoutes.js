@@ -4,6 +4,7 @@ const { protectGame } = require("../middleware/gameAuthMiddleware");
 const {
   getCases,
   getCaseById,
+  getProgress,
   startSession,
   getSession,
   interrogateSuspect,
@@ -14,6 +15,7 @@ const {
 router.use(protectGame);
 
 router.get("/cases", getCases);
+router.get("/progress", getProgress);
 router.get("/cases/:id", getCaseById);
 router.post("/sessions", startSession);
 router.get("/sessions/:id", getSession);

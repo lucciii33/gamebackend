@@ -43,6 +43,23 @@ const getCaseById = asyncHandler(async (req, res) => {
   res.json(view);
 });
 
+/**
+ * Progreso del jugador: qué casos ha resuelto (ganado) alguna vez. Es la
+ * fuente de verdad, ligada a la cuenta, para el desbloqueo de niveles del
+ * frontend. Un caso cuenta como resuelto si existe alguna sesión suya con
+ * status "won".
+ */
+const getProgress = asyncHandler(async (req, res) => {
+  const wonSessions = await GameSession.find({
+    userId: req.user?._id,
+    status: "won",
+  })
+    .select("caseId")
+    .lean();
+  const solvedCaseIds = [...new Set(wonSessions.map((s) => s.caseId))];
+  res.json({ solvedCaseIds });
+});
+
 const startSession = asyncHandler(async (req, res) => {
   const { caseId } = req.body;
   const caseData = getCase(caseId);
@@ -268,6 +285,7 @@ const accuse = asyncHandler(async (req, res) => {
 module.exports = {
   getCases,
   getCaseById,
+  getProgress,
   startSession,
   getSession,
   interrogateSuspect,
