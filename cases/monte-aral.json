@@ -1,0 +1,349 @@
+{
+  "id": "monte-aral",
+  "title": "La Noche sin Estrellas",
+  "language": "es",
+  "difficulty": "difícil",
+  "winRequirements": { "minKeyClues": 5 },
+  "synopsis": "Una tormenta de nieve deja incomunicado al Observatorio de Monte Aral la misma noche en que su director, el eminente astrofísico Augusto Belmonte, aparece muerto al pie de la escalera de la cúpula. Todo apunta a una caída accidental en la oscuridad... hasta que la herida no encaja con el golpe. Cuatro personas quedaron atrapadas con él bajo la cúpula esa noche, y todas tenían algo que perder si Belmonte llegaba al amanecer. Tienes una sola acusación.",
+  "victim": {
+    "name": "Augusto Belmonte",
+    "age": 63,
+    "occupation": "Astrofísico, director del Observatorio de Monte Aral",
+    "description": "Genio reconocido y vanidoso, célebre por firmar en solitario los hallazgos de su equipo y por humillar a quien consideraba mediocre. La semana anterior había anunciado que 'iba a poner orden' en el observatorio antes de su jubilación.",
+    "causeOfDeath": "Traumatismo craneal por golpe con objeto contundente (escenificado como caída por la escalera)",
+    "dateOfDeath": "Viernes 6 de febrero de 2026",
+    "timeOfDeath": "22:40",
+    "discoveredBy": "El técnico Tomás Bran, a las 23:20, al bajar a la cúpula cuando la secuencia de observación dio un error",
+    "location": "Al pie de la escalera de caracol de la cúpula del telescopio"
+  },
+  "setting": {
+    "location": "Observatorio de Monte Aral, Pirineos de Huesca, España",
+    "date": "Noche de tormenta de nieve",
+    "context": "Una ventisca cortó la carretera y las comunicaciones a las 21:00. Solo cuatro personas pernoctaban en el observatorio con Belmonte: su postdoctoranda, el subdirector, la administradora y el técnico. Nadie pudo entrar ni salir del edificio."
+  },
+  "suspects": [
+    {
+      "id": "nadia",
+      "name": "Nadia Ferrán",
+      "displayRole": "Investigadora postdoctoral",
+      "age": 29,
+      "shortBio": "Brillante y ambiciosa, lleva tres años en Monte Aral. Cansada de trabajar a la sombra de Belmonte.",
+      "publicAlibi": "Dice que estuvo sola en la biblioteca del observatorio revisando datos desde las 22:00 hasta que oyó el revuelo, sin ver a nadie.",
+      "secretBackstory": "Nadia descubrió un objeto transneptuniano tras meses de trabajo, pero Belmonte pensaba publicarlo en solitario, borrando su nombre: el hallazgo de su carrera, robado. Esa tarde tuvieron una discusión feroz. NO lo mató. No tiene coartada real (estaba sola), y —sin ella saberlo— su tarjeta de acceso abrió la cúpula a las 22:30 y su bufanda apareció junto al cuerpo. Está aterrada porque sabe cómo la hace ver todo eso.",
+      "personalityPrompt": "Hablas con inteligencia rápida y frustración contenida. Cuando te sientes acusada te pones a la defensiva y racionalizas todo con lógica. Te indigna la injusticia. Si te presionan con las pruebas plantadas, pasas del enfado al miedo genuino porque no puedes explicarlas. Respetas al detective solo si demuestra que razona bien.",
+      "knowsAbout": [
+        {
+          "clueId": "nadia-descubrimiento",
+          "topic": "El hallazgo que Belmonte le iba a robar",
+          "triggerKeywords": ["descubrimiento", "hallazgo", "publicación", "crédito", "paper", "artículo", "autoría", "objeto", "datos"],
+          "revealStrategy": "Al principio lo minimiza como 'diferencias académicas'. Si el jugador menciona autoría, crédito o la publicación, estalla y admite con amargura que Belmonte iba a firmar en solitario el trabajo de su vida."
+        },
+        {
+          "clueId": "tarjetas-duplicadas",
+          "topic": "Que la administradora controla y puede duplicar todas las tarjetas de acceso",
+          "triggerKeywords": ["tarjeta", "acceso", "llave", "duplicado", "clonar", "puerta", "cómo entré", "22:30", "administración"],
+          "revealStrategy": "Solo lo saca si el jugador la confronta con que su tarjeta abrió la cúpula. Entonces, casi suplicando, explica que Beatriz gestiona todas las tarjetas desde administración, que hay copias maestras y de repuesto, y que ella jamás fue a la cúpula."
+        }
+      ],
+      "hidesAbout": [],
+      "guilty": false
+    },
+    {
+      "id": "quiroga",
+      "name": "Homero Quiroga",
+      "displayRole": "Subdirector del observatorio",
+      "age": 55,
+      "shortBio": "Astrónomo veterano, segundo de a bordo desde hace veinte años. Formal, cortés, con un punto de resentimiento.",
+      "publicAlibi": "Afirma que estuvo en su despacho en videoconferencia con el Observatorio de Cerro Paranal (Chile) desde las 22:15 hasta pasadas las 23:00, por la tormenta.",
+      "secretBackstory": "Belmonte había descubierto que Quiroga llevaba dos años desviando fondos de un gran proyecto europeo (unos 200.000€) hacia una consultora fantasma suya, y esa semana le anunció que lo apartaría de la subdirección y lo denunciaría. Quiroga tenía un móvil enorme. Pero es inocente: su videollamada con Chile es real y verificable, quedó registrada de 22:15 a 23:04. Oculta el desfalco por vergüenza y miedo a la cárcel, lo que lo hace parecer culpable.",
+      "personalityPrompt": "Hablas con formalidad anticuada y frases largas y técnicas. Te escudas en tu prestigio y tu antigüedad. Cuando tocan el dinero o el proyecto europeo, te pones rígido y desvías hacia 'el legado científico de Augusto'. Si te acorralan, te ofendes con dignidad herida, pero un temblor te delata.",
+      "knowsAbout": [
+        {
+          "clueId": "quiroga-desfalco",
+          "topic": "El desvío de fondos del proyecto europeo",
+          "triggerKeywords": ["fondos", "dinero", "proyecto europeo", "subvención", "consultora", "auditoría", "desvío", "cuentas"],
+          "revealStrategy": "Niega toda irregularidad. Si el jugador menciona la auditoría, la consultora o el proyecto europeo, palidece y admite que 'hubo un solapamiento contable que Augusto malinterpretó gravemente'."
+        },
+        {
+          "clueId": "quiroga-coartada",
+          "topic": "Su videoconferencia con Chile durante el crimen",
+          "triggerKeywords": ["videollamada", "videoconferencia", "chile", "paranal", "coartada", "dónde estabas", "22:30", "22:40", "conexión"],
+          "revealStrategy": "La ofrece con cierto alivio si el jugador le pregunta por su paradero: insiste en que la llamada con Cerro Paranal quedó registrada y que hubo testigos al otro lado toda la hora de la muerte."
+        },
+        {
+          "clueId": "affair-beatriz",
+          "topic": "La relación secreta entre Beatriz y Belmonte",
+          "triggerKeywords": ["beatriz", "administradora", "relación", "amante", "romance", "affaire", "celos", "pareja"],
+          "revealStrategy": "Con desdén chismoso, si el jugador pregunta por Beatriz o por relaciones personales, insinúa que 'Augusto y la señora Salas tenían una intimidad que fue de todo menos administrativa, y que últimamente se había enfriado'."
+        }
+      ],
+      "hidesAbout": [],
+      "guilty": false
+    },
+    {
+      "id": "beatriz",
+      "name": "Beatriz Salas",
+      "displayRole": "Administradora del observatorio",
+      "age": 44,
+      "shortBio": "Gerente y administradora de Monte Aral desde hace diez años. Eficiente, encantadora, imprescindible. Lo controla todo: presupuestos, accesos, mantenimiento.",
+      "publicAlibi": "Dice que pasó toda la noche en la sala de control operando personalmente la secuencia de observación del telescopio, de 22:00 a 23:30, sin moverse de la consola, y que los registros del sistema lo prueban.",
+      "secretBackstory": "Beatriz y Belmonte fueron amantes durante años; él acababa de terminar la relación con frialdad. Peor aún: para cuadrar presupuestos de mantenimiento que ella había desviado, Beatriz llevaba tiempo FALSIFICANDO los certificados de seguridad de la cúpula, y Belmonte lo había descubierto esa semana, amenazándola con exponerla y hundirla. Lo mató de un golpe con un contrapeso del telescopio al pie de la escalera a las 22:40 y escenificó una caída. Su coartada es falsa: la 'observación de toda la noche' era una SECUENCIA AUTOMÁTICA programada, así que los registros del sistema seguían generándose sin que ella estuviera presente. Como administradora, clonó la tarjeta de Nadia para abrir la cúpula a las 22:30 (plantando un rastro) y dejó allí la bufanda de Nadia. Ella cruzó la puerta interior con su tarjeta maestra a las 22:38.",
+      "personalityPrompt": "Hablas con calidez profesional y una seguridad tranquilizadora; eres la persona más colaboradora del edificio, casi maternal con el detective. Respondes con datos, horarios y 'transparencia total' para parecer intachable. Cuando te acercas a un tema peligroso (la relación, los certificados, la automatización), sonríes y rediriges hacia lo cooperadora que estás siendo. Nunca pierdes la compostura; si te acorralan, te muestras dolida por 'la insinuación' y ofreces aún más datos que parecen exculparte.",
+      "knowsAbout": [
+        {
+          "clueId": "certificados-falsos",
+          "topic": "Los certificados de seguridad de la cúpula",
+          "triggerKeywords": ["certificados", "seguridad", "mantenimiento", "inspección", "firma", "falsificación", "cúpula", "presupuesto"],
+          "revealStrategy": "Lo presenta como un asunto burocrático menor. Si el jugador menciona la firma, la falsificación o que Belmonte los revisaba, admite con calma estudiada que 'hubo certificados que regularicé a posteriori, un tecnicismo que Augusto estaba malinterpretando', sin admitir jamás que él la amenazara."
+        }
+      ],
+      "hidesAbout": [
+        {
+          "topic": "Su relación sentimental con Belmonte",
+          "instruction": "JAMÁS admitas que fuiste amante de Augusto ni que él te dejó. Si te preguntan, insiste en que vuestra relación era 'estrictamente profesional y de gran respeto mutuo'. Muéstrate ofendida ante la insinuación."
+        },
+        {
+          "topic": "Que la observación de esa noche era automática",
+          "instruction": "JAMÁS admitas que la secuencia del telescopio era un script automático. Insiste en que operabas el telescopio A MANO, exposición por exposición, sin apartarte de la consola en toda la noche. Si mencionan automatización o scripts, dilo como un error: 'no, esa noche la llevé yo personalmente'."
+        }
+      ],
+      "guilty": true
+    },
+    {
+      "id": "tomas",
+      "name": "Tomás Bran",
+      "displayRole": "Técnico de instrumentación",
+      "age": 47,
+      "shortBio": "Ingeniero de mantenimiento del telescopio y los sistemas. Manos de oro, carácter huraño, problemas con la bebida.",
+      "publicAlibi": "Dice que estuvo en la sala de generadores vigilando la energía por la tormenta, pero no puede probar dónde estuvo entre las 22:00 y las 23:15.",
+      "secretBackstory": "Belmonte lo había pillado bebiendo de servicio y pensaba despedirlo. Esa noche Tomás bebió a escondidas en la sala de generadores, silenció una alarma que le molestaba y se quedó dormido hasta las 23:15; por eso nadie 'oyó' nada y él no tiene coartada. NO mató a Belmonte: al despertar, la secuencia había dado error y bajó a la cúpula, donde encontró el cuerpo. Se avergüenza de su borrachera y de haber desactivado la alarma, y ese ocultamiento lo hace parecer culpable. Conoce mejor que nadie que la observación de esa noche corría en modo automático, porque él mismo dejó cargado el script.",
+      "personalityPrompt": "Hablas poco, brusco, con jerga técnica. Desconfías de las autoridades. Cuando te preguntan por tu paradero te cierras y gruñes. Te avergüenza tu problema con la bebida y lo escondes con hostilidad. Pero si el jugador te trata con respeto y pregunta de sistemas, te abres y te vuelves preciso y hasta orgulloso explicando cómo funciona el telescopio.",
+      "knowsAbout": [
+        {
+          "clueId": "secuencia-automatica",
+          "topic": "Que la observación de esa noche corría en modo automático",
+          "triggerKeywords": ["automático", "script", "secuencia", "telescopio", "programado", "consola", "sistema", "registros", "operar"],
+          "revealStrategy": "Si el jugador pregunta por cómo funcionaba la observación o por los registros, se enorgullece y explica sin querer que esa noche cargó una 'secuencia automática nocturna' que 'se ejecuta sola y va dejando log cada pocos minutos sin que nadie toque nada'. No comprende que acaba de romper la coartada de Beatriz."
+        },
+        {
+          "clueId": "tomas-alarma",
+          "topic": "Que bebió, silenció una alarma y se durmió",
+          "triggerKeywords": ["bebida", "alcohol", "borracho", "alarma", "dormido", "generadores", "dónde estabas", "botella"],
+          "revealStrategy": "Lo niega con hostilidad. Solo lo admite si el jugador le presenta pruebas (la botella, la alarma silenciada), y entonces confiesa avergonzado que bebió, apagó la alarma y se quedó dormido, pero jura que no tocó a Augusto."
+        }
+      ],
+      "hidesAbout": [],
+      "guilty": false
+    }
+  ],
+  "scenes": [
+    {
+      "id": "cupula",
+      "name": "La cúpula del telescopio",
+      "shortDescription": "El gran telescopio bajo la cúpula abierta. Al pie de la escalera de caracol yace el cuerpo de Belmonte.",
+      "fullDescription": "Una sala circular fría y penumbrosa, dominada por la mole del telescopio apuntando a la rendija de la cúpula, por la que entra nieve. Una escalera de caracol metálica sube al anillo de observación. Al pie de la escalera está el cuerpo de Augusto Belmonte, boca abajo, en una postura que parece la de una caída. Junto a él hay una prenda de lana y, en el suelo metálico, marcas apenas visibles. El aire huele a frío, a grasa de maquinaria y a nieve.",
+      "objects": [
+        {
+          "id": "cuerpo-belmonte",
+          "name": "El cuerpo de Belmonte",
+          "observation": "La postura sugiere una caída por la escalera, pero la herida mortal está en la parte alta y lateral del cráneo, no en la nuca ni la frente como cabría esperar de un golpe contra los peldaños. El borde de la herida es limpio y curvo, de un objeto pesado y cilíndrico. Además, hay muy poca sangre en la escalera y mucha concentrada donde reposa la cabeza: lo golpearon aquí y luego lo colocaron.",
+          "revealsClueId": "causa-real-golpe"
+        },
+        {
+          "id": "bufanda",
+          "name": "Bufanda junto al cuerpo",
+          "observation": "Una bufanda de lana gris azulada, cara, medio oculta bajo el brazo del cadáver. Bordadas en una esquina hay unas iniciales: 'N.F.'. Está limpia, sin sangre, como si la hubieran dejado ahí después, no arrancado en un forcejeo.",
+          "revealsClueId": "bufanda-nadia"
+        },
+        {
+          "id": "escalera-caracol",
+          "name": "La escalera de caracol",
+          "observation": "Los peldaños están secos y limpios; ni marcas de resbalón, ni tejido enganchado, ni sangre en los bordes. Nada indica que alguien cayera realmente por aquí."
+        }
+      ]
+    },
+    {
+      "id": "sala-control",
+      "name": "La sala de control",
+      "shortDescription": "Consolas, pantallas y registros del telescopio. El puesto de Beatriz esa noche.",
+      "fullDescription": "Una sala cálida frente a la cúpula, llena de monitores con cielos estrellados congelados, teclados y una consola principal desde la que se opera el telescopio. Una taza de café a medias, una rebeca sobre el respaldo. En una pantalla lateral corre el registro de la observación; en otra, el panel de accesos del edificio. Aquí dice Beatriz haber pasado toda la noche.",
+      "objects": [
+        {
+          "id": "log-observacion",
+          "name": "Registro de la observación en pantalla",
+          "observation": "El log de la noche muestra exposiciones a intervalos perfectamente regulares, cada 4 minutos exactos, todas con la cabecera 'SEQ: auto_nocturna_v3 — modo desatendido'. No hay una sola intervención manual, corrección ni pausa en toda la noche: el sistema se ejecutaba solo. Un operador humano jamás produce entradas tan mecánicas.",
+          "revealsClueId": "secuencia-automatica"
+        },
+        {
+          "id": "panel-accesos",
+          "name": "Panel de accesos — puerta exterior de la cúpula",
+          "observation": "El registro de la puerta exterior de la cúpula muestra una única apertura en toda la noche: 22:30, con la tarjeta a nombre de 'N. FERRÁN'. Según esto, Nadia entró a la cúpula diez minutos antes de la muerte.",
+          "revealsClueId": "acceso-nadia"
+        },
+        {
+          "id": "panel-accesos-interior",
+          "name": "Panel de accesos — pasillo interior a la cúpula",
+          "observation": "La puerta interior que comunica la sala de control con la cúpula registra una apertura a las 22:38 con la 'TARJETA DE SERVICIO / MAESTRA'. Esa tarjeta maestra la custodia únicamente administración. Alguien pasó de la sala de control a la cúpula justo antes de la hora de la muerte.",
+          "revealsClueId": "acceso-beatriz"
+        },
+        {
+          "id": "log-videollamada",
+          "name": "Registro del puente de videoconferencia",
+          "observation": "El sistema de videoconferencia registra una sesión activa con 'Cerro Paranal (VLT) — sala Quiroga' desde las 22:15 hasta las 23:04, con tráfico de vídeo continuo en ambos sentidos. Quien estuviera en esa llamada no pudo estar en la cúpula a las 22:40.",
+          "revealsClueId": "quiroga-coartada"
+        }
+      ]
+    },
+    {
+      "id": "despacho",
+      "name": "El despacho de Belmonte",
+      "shortDescription": "El despacho del director, lleno de papeles, premios y secretos a medio archivar.",
+      "fullDescription": "Un despacho amplio con estanterías de premios, mapas estelares enmarcados y un escritorio de caoba cubierto de documentos. Belmonte estaba claramente 'poniendo orden' antes de jubilarse: hay carpetas abiertas, notas manuscritas airadas y un cajón forzado a medio revisar. La lámpara sigue encendida.",
+      "objects": [
+        {
+          "id": "manuscrito",
+          "name": "Borrador de artículo científico",
+          "observation": "El borrador de un paper sobre el descubrimiento de un nuevo objeto transneptuniano. En la lista de autores figura un único nombre: 'A. Belmonte'. Al margen, tachado a mano, se lee 'Ferrán' junto a la anotación de Belmonte: 'prescindible'. Los datos y gráficos llevan las siglas de análisis 'N.F.'.",
+          "revealsClueId": "nadia-descubrimiento"
+        },
+        {
+          "id": "carpeta-certificados",
+          "name": "Carpeta 'SEGURIDAD — CÚPULA'",
+          "observation": "Certificados de inspección de la estructura de la cúpula de los últimos tres años. Varias firmas de la inspectora oficial no coinciden entre sí y una fecha es imposible (domingo festivo). Una nota de Belmonte, subrayada tres veces: 'Beatriz — estos certificados son falsos. Hablamos el lunes. Se acabó.'",
+          "revealsClueId": "certificados-falsos"
+        },
+        {
+          "id": "informe-auditoria",
+          "name": "Informe de auditoría del proyecto europeo",
+          "observation": "Un informe financiero interno del gran proyecto europeo señala 203.000€ facturados a una consultora, 'Astranova Consulting', sin entregables. Belmonte anotó: 'Astranova = Quiroga. Apartarlo de la subdirección y denunciar'.",
+          "revealsClueId": "quiroga-desfalco"
+        },
+        {
+          "id": "registro-llaves",
+          "name": "Registro de emisión de tarjetas",
+          "observation": "El libro de control de tarjetas de acceso, gestionado por administración. Beatriz Salas figura como custodia de la tarjeta maestra y de todas las de repuesto. Consta que existe una copia de repuesto de CADA tarjeta del personal —incluida la de Nadia Ferrán— y que la programación de tarjetas se hace desde el terminal de administración.",
+          "revealsClueId": "tarjetas-duplicadas"
+        }
+      ]
+    },
+    {
+      "id": "dormitorios",
+      "name": "Los dormitorios del personal",
+      "shortDescription": "El pequeño ala de habitaciones donde pernocta el equipo cuando la nieve los aísla.",
+      "fullDescription": "Un pasillo con cuatro habitaciones austeras de literas, para cuando la tormenta obliga a quedarse. Toallas, ropa de abrigo, objetos personales. La calefacción zumba. El cuarto de Belmonte, el más grande, tiene la cama sin deshacer.",
+      "objects": [
+        {
+          "id": "cartas-beatriz",
+          "name": "Cajón personal en el cuarto de Belmonte",
+          "observation": "Bajo unos jerséis, un fajo de notas manuscritas y fotos de Belmonte con Beatriz Salas en actitud íntima, de varios años. La última nota, reciente y sin doblar, es de puño de Belmonte a Beatriz: 'Lo nuestro se terminó. Y lo de los certificados también. No mezcles las dos cosas.' Nunca llegó a entregarla.",
+          "revealsClueId": "affair-beatriz"
+        },
+        {
+          "id": "maleta-nadia",
+          "name": "Habitación de Nadia",
+          "observation": "Ordenada, con libros de dinámica orbital y un portátil apagado. En el perchero cuelga ropa de abrigo, pero se ve el hueco de una percha vacía. No hay nada que la sitúe en la cúpula por voluntad propia."
+        }
+      ]
+    },
+    {
+      "id": "sala-generador",
+      "name": "La sala de generadores",
+      "shortDescription": "Máquinas, cuadros eléctricos y el almacén de piezas del telescopio.",
+      "fullDescription": "Una sala ruidosa y caldeada con los generadores que mantienen vivo el observatorio durante la tormenta. Contra una pared, un panel de alarmas de seguridad; contra otra, un banco de trabajo y un estante de piezas pesadas del telescopio. Huele a gasóleo y, débilmente, a alcohol. Aquí dice Tomás haber pasado la noche.",
+      "objects": [
+        {
+          "id": "contrapeso",
+          "name": "Contrapeso del telescopio en el banco",
+          "observation": "Uno de los contrapesos cilíndricos de acero del telescopio está fuera de su sitio, sobre el banco, recién limpiado con disolvente. Bajo la luz rasante se ve, en el borde curvo, un resto de cabello y una película parduzca que el limpiado no llegó a eliminar. Su forma y peso encajan exactamente con la herida de Belmonte.",
+          "revealsClueId": "arma-homicida"
+        },
+        {
+          "id": "panel-alarma",
+          "name": "Panel de alarmas y botella oculta",
+          "observation": "Una de las alarmas de seguridad ha sido silenciada manualmente a las 22:05 y no se rearmó. Detrás del panel, escondida, hay una botella de licor casi vacía y un vaso. Todo apunta a que quien vigilaba aquí bebió y desconectó la alarma que le molestaba.",
+          "revealsClueId": "tomas-alarma"
+        }
+      ]
+    }
+  ],
+  "clues": [
+    {
+      "id": "causa-real-golpe",
+      "title": "No fue una caída, fue un golpe",
+      "description": "La herida mortal está en lo alto del cráneo, es curva y limpia, propia de un objeto pesado y cilíndrico. La escena de la caída está escenificada: a Belmonte lo asesinaron."
+    },
+    {
+      "id": "arma-homicida",
+      "title": "El arma: un contrapeso del telescopio",
+      "description": "Un contrapeso cilíndrico de acero, limpiado con disolvente pero con restos de cabello y sangre, encaja con la herida. El arma estaba en la sala de generadores."
+    },
+    {
+      "id": "bufanda-nadia",
+      "title": "La bufanda de Nadia junto al cuerpo",
+      "description": "Una bufanda con las iniciales 'N.F.' apareció junto al cadáver, limpia y colocada, no arrancada en un forcejeo: parece plantada."
+    },
+    {
+      "id": "acceso-nadia",
+      "title": "La tarjeta de Nadia abrió la cúpula",
+      "description": "El registro de la puerta exterior de la cúpula muestra la tarjeta de Nadia Ferrán abriendo a las 22:30, diez minutos antes de la muerte."
+    },
+    {
+      "id": "nadia-descubrimiento",
+      "title": "El descubrimiento robado de Nadia",
+      "description": "Belmonte iba a publicar en solitario el descubrimiento de Nadia, borrando su nombre del que era el trabajo de su carrera. Motivo de peso para Nadia."
+    },
+    {
+      "id": "tarjetas-duplicadas",
+      "title": "Administración controla y duplica las tarjetas",
+      "description": "Beatriz custodia la tarjeta maestra y copias de repuesto de todas las tarjetas del personal, incluida la de Nadia, y puede programarlas desde administración. La 'tarjeta de Nadia' pudo ser clonada."
+    },
+    {
+      "id": "secuencia-automatica",
+      "title": "La observación era automática",
+      "description": "La observación de esa noche corría como una secuencia automática desatendida que generaba registros sola cada 4 minutos. Estar 'registrado operando' no prueba presencia física: la coartada de Beatriz se cae."
+    },
+    {
+      "id": "acceso-beatriz",
+      "title": "La tarjeta maestra cruzó a la cúpula a las 22:38",
+      "description": "La puerta interior entre la sala de control y la cúpula se abrió a las 22:38 con la tarjeta maestra, que solo custodia administración. Beatriz salió de la sala de control hacia la cúpula justo antes de la muerte."
+    },
+    {
+      "id": "affair-beatriz",
+      "title": "El romance roto de Beatriz y Belmonte",
+      "description": "Beatriz y Belmonte fueron amantes durante años; él acababa de terminar la relación por escrito, ligándola además a los certificados falsos."
+    },
+    {
+      "id": "certificados-falsos",
+      "title": "Los certificados de seguridad falsificados",
+      "description": "Beatriz falsificó los certificados de seguridad de la cúpula para tapar desvíos de presupuesto. Belmonte lo descubrió y la amenazó con exponerla el lunes."
+    },
+    {
+      "id": "quiroga-desfalco",
+      "title": "El desvío de fondos de Quiroga",
+      "description": "Quiroga desvió 203.000€ del proyecto europeo a una consultora fantasma suya. Belmonte pensaba apartarlo y denunciarlo. Motivo de peso para Quiroga."
+    },
+    {
+      "id": "quiroga-coartada",
+      "title": "La videollamada de Quiroga con Chile",
+      "description": "Quiroga estuvo en videoconferencia verificada con el Observatorio de Cerro Paranal de 22:15 a 23:04, cubriendo la hora de la muerte. No pudo estar en la cúpula."
+    },
+    {
+      "id": "tomas-alarma",
+      "title": "Tomás bebió y silenció la alarma",
+      "description": "Tomás bebió de servicio, silenció una alarma a las 22:05 y se durmió. No tiene coartada, pero su negligencia —no un crimen— explica su comportamiento sospechoso."
+    }
+  ],
+  "killerId": "beatriz",
+  "solution": {
+    "summary": "Beatriz Salas asesinó a Augusto Belmonte golpeándolo en la cabeza con un contrapeso del telescopio al pie de la escalera de la cúpula a las 22:40, y escenificó una caída accidental.",
+    "motive": "Belmonte había terminado con frialdad su relación de años y, sobre todo, había descubierto que Beatriz falsificaba los certificados de seguridad de la cúpula para tapar desvíos de presupuesto. La amenazó con exponerla y hundirla el lunes. Beatriz lo mató para que nunca llegara a ese lunes.",
+    "means": "Usó un contrapeso cilíndrico de acero del telescopio (compatible con la herida) y luego lo limpió con disolvente en la sala de generadores. Como administradora, custodiaba la tarjeta maestra y podía clonar la de Nadia.",
+    "opportunity": "Su coartada —'operé el telescopio toda la noche, los registros lo prueban'— es falsa: la observación corría en modo automático desatendido, generando registros sin ella. Clonó la tarjeta de Nadia para abrir la puerta exterior de la cúpula a las 22:30 (plantando un rastro) y dejó allí la bufanda de Nadia; ella misma cruzó la puerta interior con la tarjeta maestra a las 22:38, mató a Belmonte a las 22:40 y volvió a la sala de control antes del siguiente registro automático.",
+    "keyClues": ["causa-real-golpe", "affair-beatriz", "certificados-falsos", "secuencia-automatica", "acceso-beatriz", "tarjetas-duplicadas"]
+  },
+  "redHerrings": [
+    "Nadia tenía el móvil más visible (su descubrimiento robado), su tarjeta abrió la cúpula a las 22:30 y su bufanda apareció junto al cuerpo. Pero la tarjeta fue clonada por administración y la bufanda estaba plantada, limpia: es la incriminada, no la culpable.",
+    "Quiroga tenía un móvil enorme (Belmonte iba a denunciar su desfalco de 203.000€), pero su videollamada con Cerro Paranal de 22:15 a 23:04 lo sitúa lejos de la cúpula durante la muerte.",
+    "Tomás no tiene coartada, silenció una alarma y estuvo cerca del arma, lo que lo hace parecer culpable; pero solo estaba borracho y dormido. Precisamente él confirma, sin querer, que la observación era automática y rompe la coartada de la verdadera asesina."
+  ]
+}
